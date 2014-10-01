@@ -1,0 +1,81 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FFF;
+}
+
+body {
+  color: #000;
+  font-family: 'Open Sans', arial, sans-serif;
+  overflow: hidden;
+}
+
+
+.terminal 
+{
+  font-family: Fixed, monospace;
+  font-size: 12px;
+  tab-size: 4;
+  background-color: #222;
+  color: white;
+  display: block;
+  border: 0;
+  padding: 10px;
+  overflow: auto; /* adds scrollbar if needed */
+
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  
+  -o-user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;  
+  user-select: text;
+}
+
+.terminal.focus 
+{
+  background-color: #333;
+}
+
+.terminal__focus 
+{
+  position: absolute;
+  top: -100px;  /* hide it */
+}
+
+.terminal--connected.focus .terminal__cursor 
+{
+  -webkit-animation: blink 1s step-end 0s infinite;
+  animation: blink 1s step-end 0s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+        background-color: #fff; /* not #aaa because it's seem there is Google Chrome bug */
+        color: #000;
+  }
+  50% {
+        background-color: transparent;
+        color: #aaa;
+  }
+}
+@-webkit-keyframes blink {
+  0%, 100% {
+        background-color: #ffffff; /* not #aaa because it's seem there is Google Chrome bug */
+        color: #000000;
+  }
+  50% {
+        background-color: transparent;
+        color: #aaaaaa;
+  }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="plugin.js"></script>
+  <script>
+    window.onload = function() {
+    var headers = { name: "Terminal", version: "1.0", description: "Terminal Window" };
+    var provider = new orion.PluginProvider(headers);
+    var serviceImpl = {
+      run: function(selected,text) {
+        console.log("Program -> "+text);
+        document.cookie = "code="+window.btoa(text);
+        return selected;
+      }
+    };
+    var serviceProperties = {
+      name: "Program Espruino",
+      key: ["r", true, true] // Ctrl+Shift+r
+    };
+    provider.registerService("orion.edit.command", serviceImpl, serviceProperties);
+  </script>
+</head>
+<body>
+  <h1>Espruino Orion Plugin</h1>
+  <ul>
+    <li>Add this plugin to Orion</li>
+    <li>Open https://www.espruino.com/orion in a separate window</li>
+    <li>Press Ctrl+Shift+R to program Espruino</li>
+  </ul>
+</body>
+</html>
