@@ -12,7 +12,8 @@
       document.cookie = "code=";
 
       var url = "http://www.espruino.com/webide?upload="+encodeURIComponent(codeToWrite);
-      window.open(url,"ide","resizable=yes,scrollbars=no,width=100,height=100,location=no,left="+(screen.width-100)+",top="+(screen.height-100));
+      window.location = url;
+//    window.open(url,"ide","resizable=yes,scrollbars=no,width=100,height=100,location=no,left="+(screen.width-100)+",top="+(screen.height-100));
     }
   }, 500);
 </script>
