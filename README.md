@@ -34,3 +34,5 @@ Connections
 This creates: 
 * A potential divider to convert the 3.3v Espruino TX signal to a 1.6v signal for the microphone
 * A bias to 1.6v for Espruino's RX (by default Espruino turns on an internal 40k pullup resistor on the Usart to stop noise getting in)
+
+**Note:** Most computers have a ~10uF capacitor in their headphone output - this allows the DC bias to work. However some computers may not have it, in which case the resting voltage for A10 will be 0v insread of 1.6v. In that case, you'll need to add a 10uF capacitor between Espruino + the resistor and the actual headphone output.
