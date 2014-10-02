@@ -4,8 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <script type="text/javascript" src="plugin.js"></script>
   <script>
-    window.onload = function() {
-    var headers = { name: "Terminal", version: "1.0", description: "Terminal Window" };
+    var headers = { name: "Espruino Orion Integration", version: "1.0", description: "Plugin to allow the Espruino Board to be programmed from Orion" };
     var provider = new orion.PluginProvider(headers);
     var serviceImpl = {
       run: function(selected,text) {
@@ -19,6 +18,7 @@
       key: ["r", true, true] // Ctrl+Shift+r
     };
     provider.registerService("orion.edit.command", serviceImpl, serviceProperties);
+    provider.connect();
   </script>
 </head>
 <body>
