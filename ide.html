@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Espruino IDE to Orion Link</title>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  
+<script>
+ setInterval(function() {
+    var code = document.cookie.match(/(^|;)[ ]*code=([^;]*)/);
+    if (code && code[2]) {
+      var codeToWrite = window.atob(code[2]);
+      document.cookie = "code=";
+
+      var url = "http://www.espruino.com/webide?upload="+encodeURIComponent(codeToWrite);
+      window.open(url,"ide","resizable=yes,scrollbars=no,width=100,height=100,location=no,left="+(screen.width-100)+",top="+(screen.height-100));
+    }
+  }, 500);
+</script>
+
+</head>
+<body>
+<p>Great! Keep this window open, and when you click 'Send to Espruino' from the Orion plugin, your code will be loaded into the Web IDE.</p>
+</body>
+</html>
