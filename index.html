@@ -9,7 +9,7 @@
   
   <script src="//espruino.github.io/EspruinoTools/core/utils.js"></script>
   <script src="//espruino.github.io/EspruinoTools/core/config.js"></script>
-<!--  <script src="EspruinoTools/core/serial_audio.js"></script> -->
+  <!--<script src="EspruinoTools/core/serial_audio.js"></script> -->
   <script src="//espruino.github.io/EspruinoTools/core/serial_audio.js"></script>
   <script src="//espruino.github.io/EspruinoTools/core/terminal.js"></script>
   <script src="//espruino.github.io/EspruinoTools/core/codeWriter.js"></script>
@@ -65,7 +65,16 @@ $(function() {
       Espruino.Core.CodeWriter.writeToEspruino(codeToWrite);
     }
   }, 500);
+
+  // checkboxes for settings
+  $(".polarity").change(function() {
+    Espruino.Core.Serial.setSoundPolarity(
+      $("#rxPolatity").is(':checked') ? 1 : -1,
+      $("#txPolatity").is(':checked') ? 1 : -1
+    );
+  });
 });
+
 
 
   </script>
@@ -77,6 +86,10 @@ $(function() {
   <div class="editor--terminal" style="position:absolute;left:0px;right:0px;top:0px;bottom:0px;">
     <div class="editor__canvas">
     </div>
+  </div>
+  <div style="position:absolute;top:0px;right:0px;color:white;"> 
+    <input type="checkbox" class="polarity" id="rxPolatity">RX Polarity<br/>
+    <input type="checkbox" class="polarity" id="txPolatity">TX Polarity<br/>
   </div>
 </body>
 </html>
