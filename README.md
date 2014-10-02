@@ -25,6 +25,8 @@ The Terminal (index.html) reads this code and converts it to sound waves which i
 Connections
 ----------
 
+![Espruino Wiring](circuit.png)
+
 * Connect Espruino GND to the sheath on both headphone and microphone jacks
 * Connect Espruino A9 (TX) to a 10k resistor, and connect that to the microphone Left+Right
 * Connect a 10k resistor to the microphone sheath and connect that to microphone Left+Right too
