@@ -25,16 +25,56 @@
   
   <script>
 $(function() {
-   Espruino.Core.Terminal.setInputDataHandler(function(d) {
+   /*Espruino.Core.Terminal.setInputDataHandler(function(d) {
       Espruino.Core.Terminal.outputDataHandler(d);
-    });
+    });*/
+  Espruino.Core.Terminal.grabSerialPort();
+ /* Espruino.Core.Serial.setSoundDebugFunction(function (d,d2,d3,d4) {
+    var c = document.getElementById("can");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0,0,c.width,c.height); 
+
+    function z(y) { return 256 - y*256; }
+
+    ctx.beginPath();
+    ctx.moveTo(0,z(d2[0]));
+    for (var i=0;i<d2.length;i++)
+      ctx.lineTo(i*c.width / d2.length,z(d2[i]));
+    ctx.strokeStyle="#8080FF";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0,z(d[0]));
+    for (var i=0;i<d.length;i++)
+      ctx.lineTo(i*c.width / d.length,z(d[i]));
+    ctx.strokeStyle="#000000";
+    ctx.stroke();
+
+    ctx.stroke();
+  });*/
+  Espruino.Core.Serial.open("", function() {
+  }, function() {
+  });
+
+  // This code grabs our code and sends it to Espruino
+ setInterval(function() {
+    var code = document.cookie.match(/(^|;)[ ]*code=([^;]*)/);
+    if (code && code[2]) {
+      var codeToWrite = window.atob(code[2]);
+      document.cookie = "code=";
+
+      Espruino.Core.CodeWriter.writeToEspruino(codeToWrite);
+    }
+  }, 500);
 });
+
+
   </script>
 
 </head>
 <body>
-
-  <div class="editor--terminal">
+<!--  <canvas id="can" width="1000" height="500"></canvas> -->
+  <div class="editor--terminal"> <!-- style="position:relative;height:200px;" -->
     <div class="editor__canvas">
     </div>
   </div>

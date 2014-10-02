@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="copyright" content="Copyright (c) IBM Corporation and others 2012." >
+  <meta charset="UTF-8">
+  <title>Terminal</title>
+  <link rel="stylesheet" type="text/css" href="terminal.css" />
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <script>
+$(function() {
+ $("button").click(function() {
+   var code = $("textarea").val();
+   console.log(code);
+   document.cookie = "code="+window.btoa(code);
+ });
+});
+
+
+  </script>
+
+</head>
+<body>
+  <textarea>print("Hello World");</textarea>
+  <button>Go</button>
+</body>
+</html>
