@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        height:100%;
+      }
+      #header { 
+        position:absolute; left:0px;right:0px; top:0px;
+        width: 100%;
+        height: 32px;
+       }
+      #send { 
+        margin: 2px;
+        background-color: #7ff;
+        display: inline-block;
+        width : 100px;
+        height : 24px;
+        border: 2px solid #077;
+        border-radius: 5px;
+        text-align:center;
+        font-size: 150%;
+        cursor: pointer;
+      }
+      #blockly { 
+        position:absolute; left:0px;right:0px; top:32px;bottom:0px; 
+        width: 100%;
+        height: 100%;
+       }
+    </style>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+  var Blockly;
+  
+  window.blocklyLoaded = function(blockly, blocklyWindow) { // see blockly/blockly.html    
+    Blockly = blockly;
+    if (blocklyWindow) {
+      blocklyWindow.promptAsync = function(title,value,callback) {
+        var value = window.prompt(title,value);
+        callback(value);
+      };
+    }
+  }; 
+
+  $(function() {
+    $("#send").click(function(e) {
+      e.preventDefault();
+      var code = Blockly.JavaScript.workspaceToCode('JavaScript');
+      console.log("Program -> "+code);
+      document.cookie = "code="+window.btoa(code);
+    });
+  });
+
+</script>
+
+  </head>
+  <body>
+  <div id="header">
+    <span id="send">Send it!</span>
+  </div>
+
+
+  <iframe id="blockly" src="blockly/blockly.html"></iframe>
+  </body>
+</html>

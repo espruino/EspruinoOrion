@@ -18,6 +18,11 @@ If you'd rather just use USB and the Web IDE...
 * Add [plugin.html](https://espruino.github.io/EspruinoOrion/plugin.html) to Eclipse Orion
 * Open [ide.html](https://espruino.github.io/EspruinoOrion/ide.html) in a new window
 
+Or if you want to use Blockly instead:
+
+* Open [index.html](https://espruino.github.io/EspruinoOrion/index.html) in a new window
+* Open [blockly.html](https://espruino.github.io/EspruinoOrion/blockly.html) 
+
 How it works
 ----------
 
