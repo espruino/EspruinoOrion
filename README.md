@@ -6,11 +6,17 @@ Espruino plugin for Eclipse Orion.
 
 Simply:
 
-* Host this on an HTTPS capable webserver
-* Add plugin.html to Eclipse Orion
-* Run index.html in a new window
+* Host this on an HTTPS capable webserver (or use [GitHub](https://espruino.github.io/EspruinoOrion/))
+* Add [plugin.html](https://espruino.github.io/EspruinoOrion/plugin.html) to Eclipse Orion
+* Open [index.html](https://espruino.github.io/EspruinoOrion/index.html) in a new window
 * Connect Espruino to your AUDIO JACKS (wiring below)
 * In Orion, open a file, go to 'Tools', and click 'Send to Espruino'
+
+If you'd rather just use USB and the Web IDE...
+
+* Use Chrome and install the [Web IDE](http://github.com/espruino/EspruinoWebIDE)
+* Add [plugin.html](https://espruino.github.io/EspruinoOrion/plugin.html) to Eclipse Orion
+* Open [ide.html](https://espruino.github.io/EspruinoOrion/ide.html) in a new window
 
 How it works
 ----------
