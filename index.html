@@ -69,8 +69,8 @@ $(function() {
   // checkboxes for settings
   $(".polarity").change(function() {
     Espruino.Core.Serial.setSoundPolarity(
-      $("#rxPolatity").is(':checked') ? 1 : -1,
-      $("#txPolatity").is(':checked') ? 1 : -1
+      $("#rxPolarity").is(':checked') ? 1 : -1,
+      $("#txPolarity").is(':checked') ? 1 : -1
     );
   });
 });
@@ -88,8 +88,8 @@ $(function() {
     </div>
   </div>
   <div style="position:absolute;top:0px;right:0px;color:white;"> 
-    <input type="checkbox" class="polarity" id="rxPolatity">RX Polarity<br/>
-    <input type="checkbox" class="polarity" id="txPolatity">TX Polarity<br/>
+    <input type="checkbox" class="polarity" id="rxPolarity">RX Polarity<br/>
+    <input type="checkbox" class="polarity" id="txPolarity">TX Polarity<br/>
   </div>
 </body>
 </html>

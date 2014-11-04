@@ -1,0 +1,58 @@
+<html>
+<!--
+  This is just a really basic webpage that uses 'serial_to_audio.js' to send JavaScript
+  code to an Espruino board. If you connect 25x WS2811 LEDs to B15 of the Espruino board
+  (and the board to the headphone jack with the circuit shown before) then when you press
+  a colour, the LED string with light up the same colour.
+-->
+  <head>
+    <meta charset="utf-8">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        height:100%;
+        overflow:hidden;
+      }
+      .col {
+        width:100px;
+        height:100px;
+        display:inline-block;
+      }
+    </style>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="serial_to_audio.js"></script>
+<script>
+  $(function() {
+    for (var r=0;r<=1;r+=0.25)
+      for (var g=0;g<=1;g+=0.25)
+        for (var b=0;b<=1;b+=0.25) {
+          var ir = 0|(r*255);
+          var ig = 0|(g*255);
+          var ib = 0|(b*255);
+          var col = ir+','+ig+','+ib;
+          $("body").append('<div class="col" style="background-color:rgb('+col+')" col="'+col+'">&nbsp;</div>');
+        }
+    $(".col").click(function() {
+      var col = $(this).attr("col").split(",");
+      console.log(col);
+      var cmd =         "SPI2.setup({baud:3200000, mosi:B15});"+
+                         "var arr = new Uint8Array(75);"+
+                         "for (var i=0;i<arr.length;i+=3) { arr[i]="+col[0]+";arr[i+1]="+col[1]+";arr[i+2]="+col[2]+"; }\n"+
+                         "SPI2.send4bit(arr, 0b0001, 0b0011);\n";
+      console.log(cmd);
+      audio_serial_write(cmd); 
+    });
+  });
+
+</script>
+
+  </head>
+  <body>
+  </body>
+</html>

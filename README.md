@@ -23,6 +23,18 @@ Or if you want to use Blockly instead:
 * Open [index.html](https://espruino.github.io/EspruinoOrion/index.html) in a new window
 * Open [blockly.html](https://espruino.github.io/EspruinoOrion/blockly.html) 
 
+**Note:** If this doesn't work, your device may have RX and/or TX polarity mixed up. Try clicking the checkboxes and trying again.
+
+Extras
+------
+
+You can also do one-directional communication (from the PC to an Espruino board). There's a simple library for this called [serial_to_audio.js](serial_to_audio.js).
+
+Examples of this are:
+
+* [blockly_simple.html](https://espruino.github.io/EspruinoOrion/blockly_simple.html) - the previous Blockly Example, but with no need for a separate window. Works perfectly on tablets!
+* [colour_chooser.html](https://espruino.github.io/EspruinoOrion/colour_chooser.html) - a simple colour chooser that will change the colour of connected WS2811 lights (on B15) when you click a coloured square.
+
 How it works
 ----------
 

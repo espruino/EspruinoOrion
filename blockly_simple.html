@@ -16,6 +16,7 @@
       #header { 
         position:absolute; left:0px;right:0px; top:0px;
         width: 100%;
+        height: 32px;
        }
       #send { 
         margin: 2px;
@@ -37,6 +38,7 @@
        }
     </style>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="serial_to_audio.js"></script>
 <script>
   var Blockly;
   
@@ -54,8 +56,19 @@
     $("#send").click(function(e) {
       e.preventDefault();
       var code = Blockly.JavaScript.workspaceToCode('JavaScript');
-      console.log("Program -> "+code);
-      document.cookie = "code="+window.btoa(code);
+      // create a 200*11/9600 = ~0.2 sec pause by just adding 
+      // characters that can't be transmitted
+      var pause = ""; 
+      for (var i=0;i<200;i++) pause += "\u0100";
+      // work out finished string
+      code = "reset();\n"+pause+code+"\n";
+      // send it!
+      console.log("Sending -> "+code);
+      audio_serial_write(code);
+    });
+
+    $("#txPolarity").change(function() {
+      audio_serial_invert = $("#txPolarity").is(':checked');
     });
   });
 
@@ -65,6 +78,7 @@
   <body>
   <div id="header">
     <span id="send">Upload</span>
+    <input type="checkbox" id="txPolarity">TX Polarity<br/>
   </div>
   <div id="blockly_container">
     <iframe id="blockly" src="blockly/blockly.html"></iframe>
