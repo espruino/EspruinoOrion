@@ -25,8 +25,8 @@ Or if you want to use Blockly instead:
 
 **Note:** If this doesn't work, your device may have RX and/or TX polarity mixed up. Try clicking the checkboxes and trying again.
 
-Extras
-------
+One-way communication
+------------------
 
 You can also do one-directional communication (from the PC to an Espruino board). There's a simple library for this called [serial_to_audio.js](serial_to_audio.js).
 
@@ -61,3 +61,10 @@ This creates:
 * A bias to 1.6v for Espruino's RX (by default Espruino turns on an internal 40k pullup resistor on the Usart to stop noise getting in)
 
 **Note:** Most computers have a ~10uF capacitor in their headphone output - this allows the DC bias to work. However some computers may not have it, in which case the resting voltage for A10 will be 0v insread of 1.6v. In that case, you'll need to add a 10uF capacitor between Espruino + the resistor and the actual headphone output.
+
+Connections for One-way communication
+----------------------------------------
+
+![One-way Espruino Wiring](circuit_single.png)
+
+This is just as before, but with the microphone part removed - so you only have two parts to solder!
