@@ -1,8 +1,10 @@
-EclipseOrion
-===========
+EspruinoOrion - Eclipse Orion plugin
+====================================
 
 
 Espruino plugin for Eclipse Orion.
+
+[There's a forum post about it here](http://forum.espruino.com/conversations/257732/)
 
 Simply:
 
